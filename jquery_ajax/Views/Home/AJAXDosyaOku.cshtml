@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AJAX ile Dosya Okuma</h2>
+<div id="divv">
+    <button id="j">Dosya Oku</button>
+</div>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#j").click(function () {
+            $.ajax({
+                type:"get",
+                url: "/Content/ankara.txt",
+                datatype: "text",
+                cache: false, //işlem bitince bellekten tutma demek
+                success: function (data) {
+                    $("#divv").html(data);
+                },
+                Error: function (data) {
+                    alert("Dosya okunamadı");
+                }
+
+            })
+        })
+    })
+
+</script>

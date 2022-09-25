@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AJAX ile XML Dosya Okuma</h2>
+<div id="divv">
+    <ul></ul>
+</div>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#divv").append("<p><b>Bölüm</b><b>OgrenciNo</b><b>Ad</b><b>Soyad</b><br /></p>") //bu satır başlık olması için
+        $.ajax({
+            type: "get",
+            url: "/Content/universite.xml",
+            datatype: "xml",
+            success: function (xml) {
+                $(xml).find('ogrenci').each(function () {
+                    $("#divv").append("<p><li>" +
+                        $(this).find('bolum').text() + "</li><li>" +
+                        $(this).find('ogrencino').text() + "</li><li>" +
+                        $(this).find('ad').text() + "</li><li>" +
+                        $(this).find('soyad').text() + "</li></p><br/>");
+                
+                })
+            },
+            Error: function (xml) {
+                alert("bir hata oluştu");
+            }
+        })
+    })
+
+</script>

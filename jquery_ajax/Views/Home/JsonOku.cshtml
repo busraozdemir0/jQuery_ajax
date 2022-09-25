@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index5";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>JQUERY Web Sitesinden JSON Parse</h2>
+<button id="j">Json Oku</button>
+<ul id="ull"></ul>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#j").click(function () {
+            $.getJSON("https://services.odata.org/v3/odata/odata.svc/Products?$format=json", function (veri) {
+                $.each(veri.value, function (key, item) {
+                    $("#ull").append("<li>"+item.Name+"---"+item.Description+"</li><br/>")
+                })
+            });
+        })
+    })
+
+
+</script>

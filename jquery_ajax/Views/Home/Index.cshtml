@@ -1,0 +1,61 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Temel jQuery Komutları</h2>
+<button id="j1">JQUERY</button>
+<button id="j2">Son JQUERY</button>
+<button id="j3">Gizle</button>
+<button id="j4">Göster</button>
+<button id="j5">GizleGöster</button>
+<button id="j6">CSSButton</button>
+<button id="j7">Uzunluk</button>
+<button id="j8">Dizi</button>
+
+<p>Bugün hava kod yazmaya müsait</p>
+
+<ul></ul>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script>
+    $("#j1").click(function () {
+        alert("ilk jquery projem")
+    })
+    $("#j2").click(function () {
+        alert("ikinci jquery projem")
+    })
+    $("p").on({
+        mouseover: function () {
+            $(this).css("color", "blue");
+        },
+        mouseleave: function () {
+            $(this).css("color", "red");
+        }
+    })
+    $("#j3").click(function () {
+        $("p").hide()
+    })
+    $("#j4").click(function () {
+        $("p").show()
+    })
+    $("#j5").click(function () {
+        $("p").toggle(1000)  /*j5 id li butona bastığımızda 1 saniyede gizleyecek
+                                tekrar basarsak 1 saniyede gösterecek*/
+    })
+    $("#j6").css({"background-color":"white","color":"red","font-size":"20px"})
+    $("#j6").click(function () {
+        $("p").append("yeni bilgi eklendi") //append komutu eklemek için kullanılır
+    })
+    $("#j7").click(function () {
+        alert($("p").length)
+    })
+
+    var takimlar = ["Bjk","fb","gs","ts","ss"]
+    $("#j8").click(function () {
+        $.each(takimlar, function (key, value) {
+            //console.log(value)
+            $("ul").append("<li>" + value +"</li>")
+        })
+    })
+</script>
